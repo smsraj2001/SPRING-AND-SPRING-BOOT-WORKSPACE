@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id = "r" class = "com.tvsmotor.service.Restaurant" autowire="byName">
+		
+		<property name ="address" value = "BTM 2nd Stage"></property>
+		<property name = "noOfEmployees" value = "30" ></property>
+	</bean>
+	
+	<bean id = "tea" class = "com.tvsmotor.service.Tea">
+		<property name = "price" value = "55" ></property>
+	</bean>
+	
+	<bean id = "tea1" class = "com.tvsmotor.service.Tea">
+		<property name = "price" value = "35" ></property>
+	</bean>
+	
+	
+	</beans>
