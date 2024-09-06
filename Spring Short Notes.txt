@@ -1,0 +1,115 @@
+1. What is Spring?
+Spring is a lightweight and flexible framework for Java-based applications that provides comprehensive infrastructure support. It simplifies Java development by offering features like Dependency Injection (DI), Aspect-Oriented Programming (AOP), and data access abstraction.
+____________________________________________________________________________________________________________________________________________________________
+2. Architecture of Spring
+•	Core Container: Provides basic Spring functionality like Dependency Injection (DI) and IoC.
+•	AOP (Aspect-Oriented Programming): Allows separation of cross-cutting concerns, like logging or transaction management.
+•	Data Access Layer: Supports data access technologies like JDBC, JPA, Hibernate, etc.
+•	Spring MVC/Web: Facilitates web applications using the Model-View-Controller (MVC) pattern.
+•	Spring Boot: Allows rapid development of Spring applications with embedded servers and auto-configuration.
+____________________________________________________________________________________________________________________________________________________________
+3. Some Modules of Spring
+•	Spring Core: The foundation of the Spring framework, providing DI and IoC.
+•	Spring AOP: Enables aspect-oriented programming to manage cross-cutting concerns like logging and security.
+•	Spring Data: Simplifies access to databases, supporting JPA, JDBC, and NoSQL databases.
+•	Spring MVC: Helps in building web applications using the MVC architecture.
+•	Spring Security: Provides features for authentication and authorization.
+____________________________________________________________________________________________________________________________________________________________
+4. What is Dependency Injection (DI)?
+Dependency Injection is a design pattern where an object's dependencies are provided externally rather than the object creating them. This promotes loose coupling and enhances testability.
+Example:
+public class Car {
+    private Engine engine;
+
+    @Autowired
+    public Car(Engine engine) {
+        this.engine = engine;
+    }
+}
+____________________________________________________________________________________________________________________________________________________________
+5. What is Inversion of Control (IoC)?
+IoC is a design principle where the control of object creation and management is transferred from the object itself to an external framework (like Spring). Spring achieves IoC using Dependency Injection.
+____________________________________________________________________________________________________________________________________________________________
+6. Different Ways to Configure Spring Dependency Injection
+1.	XML Configuration:
+<bean id="myBean" class="com.example.MyBean"/>
+2.	Java-based Configuration:
+java
+Copy code
+@Configuration
+public class AppConfig {
+    @Bean
+    public MyBean myBean() {
+        return new MyBean();
+    }
+}
+
+
+3.	Annotation-based Configuration:
+@Component
+public class MyBean {}
+
+@Autowired
+private MyBean myBean;
+____________________________________________________________________________________________________________________________________________________________
+7. What is Loosely Coupled?
+In loosely coupled systems, components are independent and don’t rely on direct knowledge of each other. This modularity improves maintainability and testability.
+Example: In DI, a class does not create its own dependencies but relies on Spring to inject them, thus reducing coupling.
+public class Car {
+    @Autowired
+    private Engine engine; // Spring injects the dependency
+}
+____________________________________________________________________________________________________________________________________________________________
+8. Spring Annotations
+1.	@Bean: Defines a bean in Java-based configuration.
+@Bean
+public Car car() {
+    return new Car();
+}
+2.	@Component: Marks a class as a Spring bean.
+java
+Copy code
+@Component
+public class Engine {}
+3.	@Configuration: Indicates a class that contains @Bean methods.
+@Configuration
+public class AppConfig {}
+4.	@ComponentScan: Configures Spring to scan for components in specified packages.
+@ComponentScan(basePackages = "com.example")
+public class AppConfig {}
+5.	@Autowired: Marks a field or constructor for automatic dependency injection.
+@Autowired
+private Engine engine;
+6.	@Qualifier: Resolves ambiguity when multiple beans of the same type are present.
+@Autowired
+@Qualifier("v6Engine")
+private Engine engine;
+____________________________________________________________________________________________________________________________________________________________
+9. How to Read Value from Properties File?
+You can read properties from a file using the @Value annotation or Environment interface.
+Example:
+@Value("${database.url}")
+private String databaseUrl;
+Configuration:
+@Configuration
+@PropertySource("classpath:application.properties")
+public class AppConfig {}
+____________________________________________________________________________________________________________________________________________________________
+10. Bean Scope in Spring
+1.	Singleton: A single instance of the bean is created for the entire Spring container (default).
+@Component
+public class SingletonBean {}
+2.	Prototype: A new instance is created every time the bean is requested.
+@Component
+@Scope("prototype")
+public class PrototypeBean {}
+3.	Request: A new bean is created for each HTTP request (Web context).
+@Scope("request")
+public class RequestBean {}
+4.	Session: A new bean is created for each HTTP session (Web context).
+@Scope("session")
+public class SessionBean {}
+5.	Global-Session: Used for Portlet-based web applications (similar to session scope).
+____________________________________________________________________________________________________________________________________________________________
+
+
