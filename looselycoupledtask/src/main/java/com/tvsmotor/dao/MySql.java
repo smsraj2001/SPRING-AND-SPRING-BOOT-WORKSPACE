@@ -8,6 +8,6 @@ public class MySql implements DataAccess {
 	@Override
 	public void connect() {
 		// TODO Auto-generated method stub
-		System.out.println("Coonected to MySQL");
+		System.out.println("Connected to MySQL");
 	}
 }

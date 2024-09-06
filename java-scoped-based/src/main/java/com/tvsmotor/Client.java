@@ -8,6 +8,9 @@ public class Client
 	{	
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		Employee employee = (Employee) context.getBean("emp");
+		Employee employee7 = (Employee) context.getBean("emp");
+		System.out.println(employee.hashCode());
+		System.out.println(employee7.hashCode());
 		employee.displayEmployeeInfo();
 		System.out.println("-----------------------------------------");
 		Employee employee2 = (Employee) context.getBean("empId");
