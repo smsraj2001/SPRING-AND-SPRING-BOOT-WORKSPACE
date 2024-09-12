@@ -54,16 +54,4 @@ public class EmployeeController {
 	{
 		return employeeService.updateEmployeeById(id, employee);
 	}
-	
-	@ExceptionHandler(InValidAgeException.class)
-	public String handleErrorForAge(InValidAgeException exception)
-	{
-		return exception.getMsg();
-	}
-	
-	@ExceptionHandler(IdNotFoundException.class)
-	public String handleErrorForIdNotFound(IdNotFoundException exception)
-	{
-		return exception.getMsg();
-	}
 }
