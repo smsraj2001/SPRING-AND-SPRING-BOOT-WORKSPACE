@@ -47,4 +47,34 @@ public class EmployeeController2
 		return new ResponseEntity<String>(employeeService.deleteEmployeeById(id), HttpStatus.OK);
 	}
 	
+	@GetMapping("/employee/findbydept/{dept}")
+	ResponseEntity<List<Employee>> findEmployeeByDept(@PathVariable String dept)
+	{
+		return new ResponseEntity<List<Employee>>(employeeService.findEmployeeByDept(dept), HttpStatus.OK);
+	}
+	
+	@GetMapping("/employee/countbydept/{dept}")
+	ResponseEntity<Integer> countEmployeeByDept(@PathVariable String dept)
+	{
+		return new ResponseEntity<Integer>(employeeService.countEmployeeByDept(dept), HttpStatus.OK);
+	}
+	
+	@GetMapping("/employee/findbydeptandname/{dept}/{name}")
+	ResponseEntity<Employee> findByDeptAndName(@PathVariable String dept, @PathVariable String name)
+	{
+		return new ResponseEntity<Employee>(employeeService.findByDeptAndName(dept, name), HttpStatus.OK);
+	}
+	
+	@GetMapping("/employee/findbyagegreatthan/{age}")
+	ResponseEntity<List<Employee>> findByAgeGreaterThan(@PathVariable int age)
+	{
+		return new ResponseEntity<List<Employee>>(employeeService.findByAgeGreaterThan(age), HttpStatus.OK);
+	}
+	
+	@GetMapping("/employee/findbyagelessthan/{age}")
+	ResponseEntity<List<Employee>> findByAgeLessThan(@PathVariable int age)
+	{
+		return new ResponseEntity<List<Employee>>(employeeService.findByAgeLessThan(age), HttpStatus.OK);
+	}
+	
 }

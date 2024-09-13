@@ -79,4 +79,34 @@ public class EmployeeServiceImpl implements EmployeeService {
 		        }).orElseThrow(() -> new IdNotFoundException("Invalid ID to delete"));		
 	}
 
+	@Override
+	public List<Employee> findEmployeeByDept(String dept) {
+		// TODO Auto-generated method stub
+		return employeeRepository.findByDept(dept);
+	}
+
+	@Override
+	public int countEmployeeByDept(String dept) {
+		// TODO Auto-generated method stub
+		return employeeRepository.countByDept(dept);
+	}
+
+	@Override
+	public Employee findByDeptAndName(String dept, String name) {
+		// TODO Auto-generated method stub
+		return employeeRepository.findByDeptAndName(dept, name);
+	}
+
+	@Override
+	public List<Employee> findByAgeGreaterThan(int age) {
+		// TODO Auto-generated method stub
+		return employeeRepository.findByAgeGreaterThan(age);
+	}
+
+	@Override
+	public List<Employee> findByAgeLessThan(int age) {
+		// TODO Auto-generated method stub
+		return employeeRepository.findByAgeLessThan(age);
+	}
+
 }
