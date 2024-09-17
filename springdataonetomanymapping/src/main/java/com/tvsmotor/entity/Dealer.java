@@ -1,5 +1,6 @@
 package com.tvsmotor.entity;
 
+import java.util.List;
 import java.util.Set;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -19,11 +20,11 @@ public class Dealer {
     private String type;
 
     @OneToMany(mappedBy = "dealer", cascade = CascadeType.ALL)
-    private Set<Vehicle> vehicles;  // A dealer can have multiple vehicles
+    private List<Vehicle> vehicles;  // A dealer can have multiple vehicles
 
     public Dealer() {}
 
-    public Dealer(int id, String name, String city, String type, Set<Vehicle> vehicles) {
+    public Dealer(int id, String name, String city, String type, List<Vehicle> vehicles) {
         this.id = id;
         this.name = name;
         this.city = city;
@@ -65,11 +66,11 @@ public class Dealer {
         this.type = type;
     }
 
-    public Set<Vehicle> getVehicles() {
+    public List<Vehicle> getVehicles() {
         return vehicles;
     }
 
-    public void setVehicles(Set<Vehicle> vehicles) {
+    public void setVehicles(List<Vehicle> vehicles) {
         this.vehicles = vehicles;
     }
 
