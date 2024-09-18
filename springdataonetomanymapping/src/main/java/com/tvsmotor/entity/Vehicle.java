@@ -1,80 +1,83 @@
 package com.tvsmotor.entity;
-
+ 
+import java.util.Set;
+ 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+ 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-
+import jakarta.persistence.OneToMany;
+ 
 @Entity
 public class Vehicle {
+ 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int vehid;
+	private String vehname;
+	private String engine;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String name;
-    private String colour;
-    private int engine;
-
-    @ManyToOne
-    @JoinColumn(name = "dealer_id", referencedColumnName = "id")  // Foreign key to the Dealer table
-    private Dealer dealer;
-
-    public Vehicle() {}
-
-    public Vehicle(int id, String name, String colour, int engine, Dealer dealer) {
-        this.id = id;
-        this.name = name;
-        this.colour = colour;
-        this.engine = engine;
-        this.dealer = dealer;
-    }
-
-    // Getters and setters
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getColour() {
-        return colour;
-    }
-
-    public void setColour(String colour) {
-        this.colour = colour;
-    }
-
-    public int getEngine() {
-        return engine;
-    }
-
-    public void setEngine(int engine) {
-        this.engine = engine;
-    }
-
-    public Dealer getDealer() {
-        return dealer;
-    }
-
-    public void setDealer(Dealer dealer) {
-        this.dealer = dealer;
-    }
-
-    @Override
-    public String toString() {
-        return "Vehicle [id=" + id + ", name=" + name + ", colour=" + colour + ", engine=" + engine + ", dealer=" + dealer + "]";
-    }
+	@JsonBackReference
+	   @ManyToOne
+	    @JoinColumn(name = "dealer_id")
+	    Dealer deal;
+ 
+ 
+	public Vehicle() {
+		super();
+	}
+ 
+ 
+	public Vehicle(int vehid, String vehname, String engine, Dealer deal) {
+		super();
+		this.vehid = vehid;
+		this.vehname = vehname;
+		this.engine = engine;
+		this.deal = deal;
+	}
+ 
+ 
+	public int getVehid() {
+		return vehid;
+	}
+ 
+ 
+	public void setVehid(int vehid) {
+		this.vehid = vehid;
+	}
+ 
+ 
+	public String getVehname() {
+		return vehname;
+	}
+ 
+ 
+	public void setVehname(String vehname) {
+		this.vehname = vehname;
+	}
+ 
+ 
+	public String getEngine() {
+		return engine;
+	}
+ 
+ 
+	public void setEngine(String engine) {
+		this.engine = engine;
+	}
+ 
+ 
+	public Dealer getDeal() {
+		return deal;
+	}
+ 
+ 
+	public void setDeal(Dealer deal) {
+		this.deal = deal;
+	}
 }
